@@ -34,9 +34,10 @@ public class AuthServlet extends ModelBaseServlet {
             session.setAttribute(ImperialCourtConst.LOGIN_EMP_ATTR_NAME, emp);
 
             // 5、前往指定页面视图
-            String templateName = "temp";
-            processTemplate(templateName, request, response);
+//            String templateName = "temp";
+//            processTemplate(templateName, request, response);
 
+            response.sendRedirect(request.getContextPath()+ "/work?method=showMemorialsDigestList");
         } catch (Exception e) {
             e.printStackTrace();
 
