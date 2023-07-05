@@ -16,4 +16,14 @@ public class MemorialsServiceImpl implements MemorialsService {
     public List<Memorials> getAllMemorialsDigest() {
         return memorialsDao.selectAllMemorialsDigest();
     }
+
+    @Override
+    public Memorials getMemorialsDetailById(String memorialsId) {
+        return memorialsDao.selectMemorialsById(memorialsId);
+    }
+
+    @Override
+    public void updateMemorialsStatusToRead(String memorialsId) {
+        memorialsDao.updateMemorialsStatusToRead(memorialsId);
+    }
 }
