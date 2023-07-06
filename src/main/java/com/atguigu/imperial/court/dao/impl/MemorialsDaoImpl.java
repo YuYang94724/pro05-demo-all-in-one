@@ -4,6 +4,8 @@ import com.atguigu.imperial.court.dao.BaseDao;
 import com.atguigu.imperial.court.dao.api.MemorialsDao;
 import com.atguigu.imperial.court.entity.Memorials;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class MemorialsDaoImpl extends BaseDao<Memorials> implements MemorialsDao {
@@ -41,6 +43,16 @@ public class MemorialsDaoImpl extends BaseDao<Memorials> implements MemorialsDao
     public void updateMemorialsStatusToRead(String memorialsId) {
         String sql = "update t_memorials set memorials_status=1 where memorials_id=?";
         update(sql, memorialsId);
+    }
+
+    @Override
+    public void updateMemorialsFeedBack(String memorialsId, String feedbackContent) {
+        String feedbackTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        String sql = "update t_memorials set memorials_status=2,feedback_content=?,feedback_time=? where memorials_id=?";
+
+        update(sql, feedbackContent, feedbackTime, memorialsId);
+
     }
 
 }

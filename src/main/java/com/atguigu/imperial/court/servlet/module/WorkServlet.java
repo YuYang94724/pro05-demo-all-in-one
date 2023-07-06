@@ -58,4 +58,17 @@ public class WorkServlet extends ModelBaseServlet {
 
     }
 
+    protected void feedBack(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // 获取表单提交的请求参数
+        String memorialsId = request.getParameter("memorialsId");
+        String feedbackContent = request.getParameter("feedbackContent");
+
+        // 执行更新
+        memorialsService.updateMemorialsFeedBack(memorialsId, feedbackContent);
+
+        // 重定向回显示奏折列表页面
+        response.sendRedirect(request.getContextPath() + "/work?method=showMemorialsDigestList");
+    }
+
 }
